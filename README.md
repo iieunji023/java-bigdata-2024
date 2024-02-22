@@ -7,8 +7,8 @@
     - [git](https://git-scm.com/) 설치
     - [git desktop](https://desktop.github.com/) 설치
     - [Python](https://www.python.org/) 설치
-    - Visual Studio 설치
-    - 나눔고딕코딩 글자체 설치
+    - [Visual Studio](https://code.visualstudio.com/) 설치
+    - [나눔고딕코딩](https://github.com/naver/nanumfont?tab=readme-ov-file) 글자체 설치
 
 - 파이썬 학습
     - 파이썬 개요
