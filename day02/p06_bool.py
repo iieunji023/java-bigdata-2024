@@ -31,4 +31,3 @@ b = 0
 print(c)                # None
 print(a + b)            # a = 1(True), b = 0(False) 따라서, 1 + 0 = 1
 print(c + a)            # None은 값을 더할 수 없다. 아무런 값도 없기 때문
-
