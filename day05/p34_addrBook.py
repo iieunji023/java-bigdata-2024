@@ -16,13 +16,27 @@ class Contact:  # 주소록 클래스
         return res
     
 def setContact():   # 사용자 입력으로 주소록 받기 함수
-    
+    (name, phoneNumber, eMail, addr) = input('주소록 입력(이름, 핸드폰, 이메일, 주소 순[구분자 /]) >').split('/')
+    name = name.strip() # 사용자 실수로 들어간 스페이스 제거
+    phoneNumber = phoneNumber.strip()
+    addr = addr.strip()
+    print(f'"{name}", "{phoneNumber}", "{eMail}","{addr}"')
 
+def displayMenu():
+    menu = ('주소록 프로그램 \n'
+            '1. 연락처 추가 \n'
+            '2. 연락처 출력 \n'
+            '3. 연락처 삭제 \n'
+            '4. 종료 \n')
+    print(menu)
+    sel = int(input('메뉴입력 : '))
+    return sel
 
 def run():
-    first = Contact('홍길동', '010-2323-3434', 'hdg@naver.com', '경성')
-    # first = Contact(addr='경성', phoneNumber='010-2222-3333', name='홍길동', eMail='hgd@naver.com')   # 생성자 매개변수 순이 아닌 원하는 순서대로 작성할 수 있다.
-    print(first)
+    while True:
+        setMenu = displayMenu()
+        if setMenu == 4:
+            break
 
 if __name__ == '__main__':      # main entry
     print('프로그램 시작')
