@@ -102,3 +102,14 @@
         - Windows App 만들기(Tkinter, PyQt 5)
 
         ![QtApp](https://raw.githubusercontent.com/iieunji023/java-bigdata-2024/main/images/bigdata02.png)
+
+## 6일차(24.02.28)
+- 파이썬 학습
+    - PyQt5 학습 이어서
+        - QWidget 자식 클래스 종류 학습
+
+        ![QLabel](https://raw.githubusercontent.com/iieunji023/java-bigdata-2024/main/images/bigdata03.png)
+
+        - Naver 뉴스 API 검색 앱
+
+        ![NaverApp](https://raw.githubusercontent.com/iieunji023/java-bigdata-2024/main/images/bigdata04.png)
