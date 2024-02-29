@@ -1,7 +1,10 @@
 # file: p05_dict.py
 # desc: 딕셔너리 자료형 학습
 
-spiderMan = {'name': 'Peter Parker', 'age': 18, 'weapon': 'Web Shooter', 'friends': ['ironMan', 'Thor', 'Captain America']}
+spiderMan = {'name': 'Peter Parker', 
+             'age': 18, 
+             'weapon': 'Web Shooter', 
+             'friends': ['ironMan', 'Thor', 'Captain America']}
 
 ## 출력
 print(spiderMan)

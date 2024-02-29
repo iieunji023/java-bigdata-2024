@@ -55,19 +55,24 @@ class qtApp(QWidget):
 
         n = 0
         for post in result:
-            self.tblSearchResult.setItem(n, 0, QTableWidgetItem(post['title']))
+            # html 태그, 특수문자 삭제를 해야 함(<b>손흥민</b>, &lt;[<], &gt;[>], &quot;['] &nbsp;[ ])
+            title = str(post['title']).replace('<b>', '').replace('</b>', '').replace('&quot;', '"')
+            self.tblSearchResult.setItem(n, 0, QTableWidgetItem(title))
+
+            # self.tblSearchResult.setItem(n, 0, QTableWidgetItem(post['title']))
             self.tblSearchResult.setItem(n, 1, QTableWidgetItem(post['link']))
-            tempDate = str(post['pubDate']).split(' ')
-            year = tempDate[3]
-            month = time.strptime(tempDate[2], '%b').tm_mon
-            month = f'{month:02d}'
-            day = tempDate[1]
+            # 현재날짜 Thu, 29 Feb 2024 09:00:00 +09:00 --> 2024-02-29로 변경하는 작업
+            tempDates = str(post['pubDate']).split(' ')
+            year = tempDates[3]
+            month = time.strptime(tempDates[2], '%b').tm_mon # Feb, Mar 같은 영어 단축 이름을 2, 3 같은 월에 대한 숫자로 변경하는 로직
+            month = f'{month:02d}'  # 월에 대한 두자리 만들 때 01, 02
+            day = tempDates[1]
             date = f'{year}-{month}-{day}'
             self.tblSearchResult.setItem(n, 2, QTableWidgetItem(date))
             n += 1
 
-        self.tblSearchResult.setColumnWidth(0, 465) #컬럼 길이(1열)
-        self.tblSearchResult.setColumnWidth(1, 200) #컬럼 길이(2열)
+        self.tblSearchResult.setColumnWidth(0, 430) #QTable에 가로 스크롤을 없애기 위해서
+        self.tblSearchResult.setColumnWidth(1, 200) 
         self.tblSearchResult.setEditTriggers(QAbstractItemView.NoEditTriggers)  # 컬럼 더블클릭 금지
        
     def closeEvent(self, QCloseEvent) -> None: 
