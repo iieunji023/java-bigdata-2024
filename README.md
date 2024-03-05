@@ -149,7 +149,7 @@
 - 파이썬 응용
     - 이미지 처리 OpenCV
 
-    ![얼굴인식] (https://raw.githubusercontent.com/iieunji023/java-bigdata-2024/main/images/bigdata10.gif) 
+    ![얼굴인식](https://raw.githubusercontent.com/iieunji023/java-bigdata-2024/main/images/bigdata10.gif) 
 
     - [Flask] (https://flask-docs-kr.readthedocs.io/ko/latest/index.html), [Django] (https://developer.mozilla.org/ko/docs/Learn/Server-side/Django) 웹서버
 
