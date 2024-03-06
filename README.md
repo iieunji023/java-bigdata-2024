@@ -160,6 +160,10 @@
 ## 10일차
 - 파이썬 응용
     - 그림에디터 완성(OpenCV 그레이스케일, 블러기능 추가)
+
+        > mp4로 동영상 업로드 하려면 github 사이트에서 README.md를 수정 클릭 후, mp4를 드래그하면 됨
+        > 제한사항은 10MB 이하
+
     - 실행파일 만들기
         - PyInstaller 모듈 설치
         ```shell
@@ -168,6 +172,6 @@
         ```
         - -w는 윈도우창만 실행 콘솔창 삭제, -F _internal 폴더 생성안되도록, 진짜 oneFile로 만들기
         - 실패, 재생성시는 build, dist폴더 삭제, pythonfile.spec 삭제 후 다시 명령어 실행
-        
+
     - 메모장 만들기
     - Jupyter Notebook 사용법(빅데이터 분석, 코딩테스트)
