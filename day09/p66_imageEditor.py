@@ -4,6 +4,9 @@
 qrc 파일을 사용하려면
 > pyrcc5 "resource.qrc" -o "resources_rc.py"
 를 통해 qrc파일을 파이썬에서 사용할 수 있도록 컴파일해줌
+
+imutils
+> pip install imutils
 '''
 import sys
 from PyQt5 import uic
@@ -12,8 +15,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 # 리소스 파일 추가
 import resources_rc
-# OpenCV 추가
-import cv2
+# OpenCV, imutils 모듈 추가
+import cv2, imutils
 
 class winApp(QMainWindow):   # QWidget 아님
     def __init__(self) -> None:
@@ -22,11 +25,14 @@ class winApp(QMainWindow):   # QWidget 아님
         self.initSignal()
 
     def initUI(self):
-        uic.loadUi('./day09/pyNewPaint.ui', self)
-        self.setWindowIcon(QIcon('./day09/imgs/editor.png'))
+        # uic.loadUi('./day09/pyNewPaint.ui', self)   # VSCode 실행용
+        uic.loadUi('C:/Source/java-bigdata-2024/day09/pyNewPaint.ui', self)   # PyInstaller용 절대경로를 다 적어줘야 함
+        # self.setWindowIcon(QIcon('./day09/imgs/editor.png'))
+        self.setWindowIcon(QIcon('C:/Source/java-bigdata-2024/day09/imgs/editor.png'))
         self.setWindowTitle('이미지에디터  v0.5')
         ## 이미지 추가 / 여러가지 UI에 대한 초기화
-        pixmap = QPixmap('./day09/ding.jpg').scaledToHeight(471)
+        # pixmap = QPixmap('./day09/ding.jpg').scaledToHeight(471)
+        pixmap = QPixmap('C:/Source/java-bigdata-2024/day09/ding.jpg').scaledToHeight(471)
         self.lblCanvas.setPixmap(pixmap)
         self.brushColor = Qt.red    # 빨간색이 기본
         ## UI 초기화 끝
@@ -46,7 +52,16 @@ class winApp(QMainWindow):   # QWidget 아님
         self.action_G.triggered.connect(self.actionGrayscaleClicked)
 
     def actionGrayscaleClicked(self):
-        image = cv2.imread()
+        # temp.png와 같은 형태로 임시 이미지 저장
+        # OpenCV로 불러옴
+        # 그레이스케일로 변경한 다음
+        # 변경한 이미지를 다시 pixmap으로 변환한 후 lblCanvas에 올림
+        tempPath = './day09/temp.png'
+        pixmap = self.lblCanvas.pixmap()    # 라벨에 있는 그림을 pixmap 변수에 저장
+        pixmap.save(tempPath)
+        image = cv2.imread(tempPath)
+        grayImg = QImage(image, image.shape[1], image.shape[0], image.strides[0], QImage.Format_Grayscale16)
+        self.lblCanvas.setPixmap(QPixmap.fromImage(grayImg))
 
     def actionNewClicked(self):
         canvas = QPixmap(self.lblCanvas.width(), self.lblCanvas.height())
@@ -68,6 +83,7 @@ class winApp(QMainWindow):   # QWidget 아님
         pixmap.save(filePath)
 
     def actionExitClicked(self):
+        cv2.destroyAllWindows()
         exit(0) # 종료
 
     def actionPenRedClicked(self):
