@@ -163,6 +163,11 @@
 
         > mp4로 동영상 업로드 하려면 github 사이트에서 README.md를 수정 클릭 후, mp4를 드래그하면 됨
         > 제한사항은 10MB 이하
+        
+
+        https://github.com/iieunji023/java-bigdata-2024/assets/134913155/1bb67695-38aa-4333-97ea-d96918f26dfe
+
+
 
     - 실행파일 만들기
         - PyInstaller 모듈 설치
